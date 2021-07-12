@@ -1,7 +1,7 @@
 const { MessageEmbed } = require('discord.js')
 const config = require('../../config.js')
 
-let palabras = [
+const palabras = [
   'Hola, que tal',
   'Hi, how are you?',
   'hola, como estas',

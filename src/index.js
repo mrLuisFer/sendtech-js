@@ -15,9 +15,9 @@ client.on('ready', () => {
   // Establece el estado del bot (cambia cada 5s)
   function presence() {
     setInterval(function () {
-      let statuses = config.statusBOT
-      let status = Math.floor(Math.random() * statuses.length)
-      let dstatus = statuses[status]
+      const statuses = config.statusBOT
+      const status = Math.floor(Math.random() * statuses.length)
+      const dstatus = statuses[status]
       client.user.setPresence({
         status: 'online',
         activity: {
@@ -38,7 +38,7 @@ client.on('guildMemberAdd', (member) => {
   // Msg Welcome user
   const embed = new MessageEmbed()
     .setTitle(`Bienvenid@ ${member.displayName} `)
-    .setDescription(`Recuerda aprender y compartir tus conocimientos con toda SendTech Community`)
+    .setDescription('Recuerda aprender y compartir tus conocimientos con toda SendTech Community')
     .setColor(0xf75762)
     .setImage(
       'https://lh3.googleusercontent.com/l-9Cie5TSnzti1fdAkmBevlM_QYoUGz7E0_MRA_nnPTEkIIEVQPN3oHD4o0xvBFrsirchQ=s170'
@@ -52,16 +52,15 @@ client.on('message', (msg) => {
   const args = msg.content.slice(config.prefix.length).trim().split(/ +/g)
   const command = args.shift().toLowerCase()
   switch (command) {
-    case `ping`:
+    case 'ping':
       pingPong(msg)
-    case `avatar`:
+      break
+    case 'avatar':
       avatar(msg)
       break
-    case `suggest`:
+    case 'suggest':
       suggest(msg, args, command)
       break
-      ''
-    case `!hola`:
     case 'hola':
       hola(msg)
       break

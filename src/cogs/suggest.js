@@ -1,4 +1,4 @@
-const { Client, MessageEmbed } = require('discord.js')
+const { MessageEmbed } = require('discord.js')
 const config = require('../../config.js')
 
 const suggest = (msg) => {
@@ -6,12 +6,12 @@ const suggest = (msg) => {
   const command = args.shift().toLowerCase()
 
   const channelSuggest = msg.guild.channels.cache.get('864155481516802088')
-  if (command === `suggest`) {
+  if (command === 'suggest') {
     if (!args[0]) return msg.channel.send(`El comando es ${config.prefix}suggest [msg]`)
 
     const embed = new MessageEmbed()
       .setAuthor(msg.author.username, msg.author.displayAvatarURL())
-      .setTitle(`Suggestion`)
+      .setTitle('Suggestion')
       .setDescription(args.join(' '))
       .setColor(0xf75762)
     channelSuggest.send(embed).then((msg) => {
