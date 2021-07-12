@@ -6,14 +6,15 @@ const config = require('../../config')
  * @returns {void} void
  */
 function presence(client) {
-  setInterval(function () {
-    const statuses = config.statusBOT
-    const status = Math.floor(Math.random() * statuses.length)
-    const dstatus = statuses[status]
+  setInterval(() => {
+    const botStatus = config.statusBOT
+    const status = Math.floor(Math.random() * botStatus.length)
+    const statusName = botStatus[status]
+
     client.user.setPresence({
       status: 'online',
       activity: {
-        name: `${dstatus}`,
+        name: `${statusName}`,
         type: 'WATCHING',
       },
     })
