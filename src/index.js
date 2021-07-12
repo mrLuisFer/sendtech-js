@@ -1,5 +1,6 @@
 const { Client, MessageEmbed } = require('discord.js')
 const config = require('../config.js')
+const presence = require('./utils/presence.js')
 // Commands
 const avatar = require('./commands/avatar.js')
 const hola = require('./commands/hola')
@@ -15,22 +16,7 @@ client.on('ready', () => {
   console.log(client.user.tag, 'Esta conectado')
   console.log('Estado del bot:', client.user.presence.status)
 
-  // Establece el estado del bot (cambia cada 5s)
-  function presence() {
-    setInterval(function () {
-      const statuses = config.statusBOT
-      const status = Math.floor(Math.random() * statuses.length)
-      const dstatus = statuses[status]
-      client.user.setPresence({
-        status: 'online',
-        activity: {
-          name: `${dstatus}`,
-          type: 'WATCHING',
-        },
-      })
-    }, 5000)
-  }
-  presence()
+  presence(client)
 })
 
 // Ve cuando entra un nuevo usuario al server
