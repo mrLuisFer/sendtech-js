@@ -7,4 +7,4 @@ node_modules
 .vscode-test
 .vscode-test-output
 .vscode-test-output-*
-
+coverage
