@@ -1,0 +1,19 @@
+{
+  "name": "sendtech-bot",
+  "version": "1.0.0",
+  "description": "bot de sendero tecnologico con js",
+  "main": "src/index.js",
+  "scripts": {
+    "dev": "node src/index.js"
+  },
+  "keywords": [
+    "bot",
+    "discord.js",
+    "javascript"
+  ],
+  "author": "Matias Blanc",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^12.5.3"
+  }
+}
