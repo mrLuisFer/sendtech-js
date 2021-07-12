@@ -1,11 +1,11 @@
 const { Client, MessageEmbed } = require('discord.js')
 const config = require('../config.js')
 // Commands
-const avatar = require('./cogs/avatar.js')
-const hola = require('./cogs/hola.js')
-const pingPong = require('./cogs/ping.js')
-const suggest = require('./cogs/suggest.js')
-const help = require('./cogs/help.js')
+const avatar = require('./commands/avatar.js')
+const hola = require('./commands/hola')
+const pingPong = require('./commands/ping.js')
+const suggest = require('./commands/suggest.js')
+const help = require('./commands/help.js')
 
 // El intents le da permiso para dar roles y dar la bienvenida
 const client = new Client({ ws: { intents: 32767 } })

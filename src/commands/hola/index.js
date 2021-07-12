@@ -1,23 +1,8 @@
-const { MessageEmbed } = require('discord.js')
-const config = require('../../config.js')
+'use strict'
 
-const palabras = [
-  'Hola, que tal',
-  'Hi, how are you?',
-  'hola, como estas',
-  'Que tal',
-  'Mucho gusto',
-  'Que haces',
-  'Mucho tiempo sin verte',
-  'Cómo está usted',
-  'Que gusto verte',
-  '¿Cómo van las cosas?',
-  '¿Qué pasa?',
-  '¿Qué hay de nuevo?',
-  'Buenas',
-  'Hello world',
-  'Hola mundo',
-]
+const { MessageEmbed } = require('discord.js')
+const config = require('../../../config.js')
+const palabras = require('./palabras')
 
 /**
  * @function hola
