@@ -65,4 +65,4 @@ client.on('message', msg => { // hay que cerrar este
   })  
 
 // Aqui va el token del bot
-client.login(process.env.BOT_TOKEN);
+client.login(config.BOT_TOKEN);

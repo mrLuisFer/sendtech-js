@@ -5,7 +5,7 @@ const suggest = msg => {
   const args = msg.content.slice(config.prefix.length).trim().split(/ +/g);
   const command = args.shift().toLowerCase();
 
-  const channelSuggest = msg.guild.channels.cache.get("861286486686957570");
+  const channelSuggest = msg.guild.channels.cache.get("864155481516802088");
 if(command === `suggest`) {
   if(!args[0]) return msg.channel.send(`El comando es ${config.prefix}suggest [msg]`)
 
