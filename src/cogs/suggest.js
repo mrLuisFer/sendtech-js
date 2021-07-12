@@ -1,6 +1,11 @@
 const { MessageEmbed } = require('discord.js')
 const config = require('../../config.js')
 
+/**
+ * @function suggest
+ * @param {Message} msg The message object
+ * @returns {void} void
+ */
 const suggest = (msg) => {
   const args = msg.content.slice(config.prefix.length).trim().split(/ +/g)
   const command = args.shift().toLowerCase()

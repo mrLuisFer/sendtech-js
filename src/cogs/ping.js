@@ -1,6 +1,11 @@
 const { MessageEmbed } = require('discord.js')
 const config = require('../../config.js')
 
+/**
+ * @function pingPong
+ * @param {Message} msg The message object
+ * @returns {void} void
+ */
 const pingPong = (msg) => {
   if (msg.content === `${config.prefix}ping`) {
     const ping = Date.now() - msg.createdTimestamp

@@ -19,6 +19,11 @@ const palabras = [
   'Hola mundo',
 ]
 
+/**
+ * @function hola
+ * @param {Message} msg The message object
+ * @returns {void} void
+ */
 const hola = (msg) => {
   if (msg.content === `${config.prefix}hola` || msg.content === 'hola') {
     const palabraFinal = palabras[Math.floor(Math.random() * palabras.length)]

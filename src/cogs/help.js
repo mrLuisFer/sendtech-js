@@ -1,6 +1,12 @@
 const { MessageEmbed } = require('discord.js')
 const config = require('../../config.js')
 
+/**
+ * @function help
+ * @param {Message} msg The message object
+ * @param {Client} client The bot client
+ * @returns {void}
+ */
 const help = (msg, client) => {
   if (msg.content === `${config.prefix}help`) {
     const embed = new MessageEmbed()

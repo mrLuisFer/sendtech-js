@@ -1,6 +1,11 @@
 const { MessageEmbed } = require('discord.js')
 const config = require('../../config.js')
 
+/**
+ * @function avatar
+ * @param {Message} msg The message object
+ * @returns {void}
+ */
 const avatar = (msg) => {
   if (msg.content === `${config.prefix}avatar`) {
     const embed = new MessageEmbed()
