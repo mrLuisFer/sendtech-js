@@ -1,12 +1,15 @@
 const { Client, MessageEmbed } = require('discord.js')
 const config = require('../config.js')
-// Cada archivo que se añada debe tenet un require
+// Commands
 const avatar = require('./cogs/avatar.js')
 const hola = require('./cogs/hola.js')
 const pingPong = require('./cogs/ping.js')
 const suggest = require('./cogs/suggest.js')
+const help = require('./cogs/help.js')
+
 // El intents le da permiso para dar roles y dar la bienvenida
 const client = new Client({ ws: { intents: 32767 } })
+
 // Hace algo cuando el bot esta online
 client.on('ready', () => {
   console.log(client.user.tag, 'Esta conectado')
@@ -48,7 +51,6 @@ client.on('guildMemberAdd', (member) => {
 })
 
 client.on('message', (msg) => {
-  // hay que cerrar este
   const args = msg.content.slice(config.prefix.length).trim().split(/ +/g)
   const command = args.shift().toLowerCase()
   switch (command) {
@@ -63,6 +65,9 @@ client.on('message', (msg) => {
       break
     case 'hola':
       hola(msg)
+      break
+    case 'help':
+      help(msg, client)
       break
   }
 })
