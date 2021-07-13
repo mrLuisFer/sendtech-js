@@ -1,10 +1,10 @@
 require('dotenv').config()
 
-const token = process.env.DISCORD_BOT_TOKEN
+const token = 'Tu Token';
 
 module.exports = {
   prefix: '!',
   BOT_TOKEN: token,
   statusBOT: ['mi prefix !', 'Talleres', 'a SendTech', 'Tiktoks'],
-  embedColor: 0xf75762,
+  embedColor: 0xf75762, 
 }

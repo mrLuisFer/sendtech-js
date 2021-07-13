@@ -31,7 +31,7 @@ client.on('guildMemberAdd', (member) => {
     .setDescription('Recuerda aprender y compartir tus conocimientos con toda SendTech Community')
     .setColor(config.embedColor)
     .setImage(
-      'https://lh3.googleusercontent.com/l-9Cie5TSnzti1fdAkmBevlM_QYoUGz7E0_MRA_nnPTEkIIEVQPN3oHD4o0xvBFrsirchQ=s170'
+      'https://ibb.co/9nLKz3Z'
     )
     .setAuthor(member.displayName, member.user.displayAvatarURL())
   channelWelcome.send(embed).then((member) => member.react('👋'))
