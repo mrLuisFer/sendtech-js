@@ -64,6 +64,7 @@ client.on('message', (msg) => {
         help(msg, client)
         break
       case 'wiki':
+      case 'search':
         wiki(msg, args)
         break
     }
