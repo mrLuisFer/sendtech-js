@@ -11,7 +11,7 @@ const avatar = (msg) => {
     const embed = new MessageEmbed()
       .setTitle(`Que guap@ ${msg.author.username}`)
       .setImage(msg.author.displayAvatarURL())
-      .setColor(0xf75762)
+      .setColor(config.embedColor)
 
     msg.channel.send(embed).then((msg) => msg.react('😉'))
   }

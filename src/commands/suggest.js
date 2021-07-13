@@ -18,7 +18,7 @@ const suggest = (msg) => {
       .setAuthor(msg.author.username, msg.author.displayAvatarURL())
       .setTitle('Nueva Sugerencia!')
       .setDescription(args.join(' '))
-      .setColor(0xf75762)
+      .setColor(config.embedColor)
     channelSuggest.send(embed).then((msg) => {
       msg.react('⬆').then(() => {
         msg.react('⬇')

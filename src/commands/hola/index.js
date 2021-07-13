@@ -16,7 +16,7 @@ const hola = (msg) => {
     const embed = new MessageEmbed()
       .setTitle(palabraFinal)
       .setDescription('Nota: Estoy Vivo :shushing_face: | Por suerte.')
-      .setColor(0xf75762)
+      .setColor(config.embedColor)
 
     msg.channel.send(embed).then((msg) => msg.react('👋'))
   }

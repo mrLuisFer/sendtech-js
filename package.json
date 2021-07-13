@@ -15,10 +15,11 @@
     "javascript"
   ],
   "author": "Matias Blanc",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "discord.js": "^12.5.3",
-    "dotenv": "^10.0.0"
+    "dotenv": "^10.0.0",
+    "node-fetch": "^2.6.1"
   },
   "devDependencies": {
     "eslint": "^7.30.0",
