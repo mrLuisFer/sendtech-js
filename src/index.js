@@ -37,24 +37,30 @@ client.on('guildMemberAdd', (member) => {
 })
 
 client.on('message', (msg) => {
-  const args = msg.content.slice(config.prefix.length).trim().split(/ +/g)
+  const args = msg.content.toLocaleLowerCase().slice(config.prefix.length).trim().split(/ +/g)
   const command = args.shift().toLowerCase()
-  switch (command) {
-    case 'ping':
-      pingPong(msg)
-      break
-    case 'avatar':
-      avatar(msg)
-      break
-    case 'suggest':
-      suggest(msg, args, command)
-      break
-    case 'hola':
-      hola(msg)
-      break
-    case 'help':
-      help(msg, client)
-      break
+  console.log(`Command: ${command}`)
+
+  try {
+    switch (command) {
+      case 'ping':
+        pingPong(msg)
+        break
+      case 'avatar':
+        avatar(msg)
+        break
+      case 'suggest' || 'sug':
+        suggest(msg, args, command)
+        break
+      case 'hola' || 'Hola':
+        hola(msg)
+        break
+      case 'help':
+        help(msg, client)
+        break
+    }
+  } catch (err) {
+    console.error(err)
   }
 })
 
