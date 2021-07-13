@@ -54,7 +54,8 @@ client.on('message', (msg) => {
       case 'avatar':
         avatar(msg)
         break
-      case 'suggest' || 'sug':
+      case 'suggest':
+      case 'sug':
         suggest(msg, args, command)
         break
       case 'hola' || 'Hola':
