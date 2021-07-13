@@ -4,7 +4,10 @@
   "description": "bot de sendero tecnologico con js",
   "main": "src/index.js",
   "scripts": {
-    "dev": "node src/index.js"
+    "dev": "npx nodemon src/index.js",
+    "start": "node src/index.js",
+    "format": "npx prettier --write .",
+    "format:check": "npx prettier --check ."
   },
   "keywords": [
     "bot",
@@ -14,6 +17,17 @@
   "author": "Matias Blanc",
   "license": "ISC",
   "dependencies": {
-    "discord.js": "^12.5.3"
+    "discord.js": "^12.5.3",
+    "dotenv": "^10.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^7.30.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-config-standard": "^16.0.3",
+    "eslint-plugin-import": "^2.23.4",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^5.1.0",
+    "nodemon": "^2.0.12",
+    "prettier": "2.3.2"
   }
 }

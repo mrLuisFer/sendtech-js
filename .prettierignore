@@ -1,0 +1,10 @@
+build
+node_modules
+.github
+.git
+.idea
+.vscode
+.vscode-test
+.vscode-test-output
+.vscode-test-output-*
+coverage
