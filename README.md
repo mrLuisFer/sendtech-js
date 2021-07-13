@@ -2,7 +2,7 @@
 
 ## 💫 About
 
-(Matias escribira aqui acerca del bot)
+El bot es para el buen funcionamineto de la comunindad de discord, cada vez que desarrollamos este bot la idea es poner mas funcionalidades y asi eliminar a todos los bots del servidor para solo tener a nuestro querido SendTech js
 
 ## 🌿 Contribuir
 
