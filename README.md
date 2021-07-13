@@ -53,7 +53,6 @@ git add .
 git commit -m "feat: algun mensaje descriptivo"
 
 git push origin <tu rama>
-
 ```
 
 > Debes subir los cambios a la rama development no a main
