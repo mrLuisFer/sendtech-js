@@ -7,14 +7,14 @@ const wiki = async (message, args) => {
   const wikiQuery = args[0]
   console.log(wikiQuery)
 
-  if (wikiQuery.length > 2 && wikiQuery !== undefined) {
+  if (wikiQuery !== undefined) {
     const url = `https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(wikiQuery)}` // From Here BOT Will Search For It
 
     let response
     try {
       response = await fetch(url).then((res) => res.json())
-    } catch (e) {
-      console.log(e)
+    } catch (error) {
+      console.log(error)
       return message.reply('Ocurrió un error, intentelo de nuevo')
     }
 
@@ -43,6 +43,8 @@ const wiki = async (message, args) => {
     } catch {
       return message.reply('Coloca alguna cosa para buscar ;)') // If Searched Query Is Not Available
     }
+  } else {
+    return message.reply('Coloca alguna cosa para buscar ;)') // If Searched Query Is Not Available
   }
 }
 
