@@ -7,6 +7,7 @@ const hola = require('./commands/hola')
 const pingPong = require('./commands/ping.js')
 const suggest = require('./commands/suggest.js')
 const help = require('./commands/help.js')
+const wiki = require('./commands/wiki.js')
 
 // El intents le da permiso para dar roles y dar la bienvenida
 const client = new Client({ ws: { intents: 32767 } })
@@ -57,6 +58,9 @@ client.on('message', (msg) => {
         break
       case 'help':
         help(msg, client)
+        break
+      case 'wiki':
+        wiki(msg, args)
         break
     }
   } catch (err) {
