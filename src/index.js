@@ -29,7 +29,7 @@ client.on('guildMemberAdd', (member) => {
   const embed = new MessageEmbed()
     .setTitle(`Bienvenid@ ${member.displayName} `)
     .setDescription('Recuerda aprender y compartir tus conocimientos con toda SendTech Community')
-    .setColor(0xf75762)
+    .setColor(config.embedColor)
     .setImage(
       'https://lh3.googleusercontent.com/l-9Cie5TSnzti1fdAkmBevlM_QYoUGz7E0_MRA_nnPTEkIIEVQPN3oHD4o0xvBFrsirchQ=s170'
     )
@@ -38,6 +38,10 @@ client.on('guildMemberAdd', (member) => {
 })
 
 client.on('message', (msg) => {
+  // Valida que los mensajes no sean del bot
+  if (msg.author === client.user) return
+  if (msg.author.bot) return
+
   const args = msg.content.toLocaleLowerCase().slice(config.prefix.length).trim().split(/ +/g)
   const command = args.shift().toLowerCase()
   console.log(`Command: ${command}`)
@@ -68,5 +72,4 @@ client.on('message', (msg) => {
   }
 })
 
-// Aqui va el token del bot
 client.login(config.BOT_TOKEN)

@@ -19,7 +19,7 @@ const help = (msg, client) => {
         ${config.prefix}hola: El bot te dice hola \n
         ${config.prefix}ping: Quieres saber que tan rapido soy? \n`
       )
-      .setColor(0xf75762)
+      .setColor(config.embedColor)
 
     msg.channel.send(embed)
   }
