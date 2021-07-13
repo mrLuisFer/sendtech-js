@@ -14,9 +14,8 @@ const client = new Client({ ws: { intents: 32767 } })
 
 // Hace algo cuando el bot esta online
 client.on('ready', () => {
-  console.log(client.user.tag, 'Esta conectado')
   console.log('Estado del bot:', client.user.presence.status)
-
+  console.log("100% [██████████] Cargado")
   presence(client)
 })
 
