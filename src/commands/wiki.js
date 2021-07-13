@@ -1,6 +1,7 @@
 const { MessageEmbed } = require('discord.js')
 const fetch = require('node-fetch')
 const config = require('../../config.js')
+const sendEmbedError = require('../utils/functions/sendEmbedError.js')
 
 const wiki = async (message, args) => {
   if (args === undefined || !args) return message.reply('Escribe el item a buscar') // If Nothing Is Searched
@@ -8,43 +9,68 @@ const wiki = async (message, args) => {
   console.log(wikiQuery)
 
   if (wikiQuery !== undefined) {
-    const url = `https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(wikiQuery)}` // From Here BOT Will Search For It
+    const baseUrl = `https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(
+      wikiQuery
+    )}` // From Here BOT Will Search For It
 
     let response
     try {
-      response = await fetch(url).then((res) => res.json())
+      response = await fetch(baseUrl).then((res) => res.json())
     } catch (error) {
       console.log(error)
-      return message.reply('Ocurrió un error, intentelo de nuevo')
+      return sendEmbedError({
+        msg: message,
+        title: 'Error al obtener la data',
+        description: 'Espera a que se repare la llamada a la API e intenta de nuevo',
+      })
     }
 
     try {
       if (response.type === 'disambiguation') {
-        const embed = new MessageEmbed()
-          .setColor(config.embedColor)
-          .setTitle(response.title)
-          .setURL(response.content_urls.desktop.page)
-          .setDescription([
-            `
-            ${response.extract}
-            Links For Topic You Searched [Link](${response.content_urls.desktop.page}).`,
-          ])
-        message.channel.send(embed)
+        return sendEmbedError({
+          msg: message,
+          title: `Bucando ${wikiQuery}?`,
+          description: `
+            Por alguna razon Wikipedia no encontro algun resultado pero puede ser problema de la API, asi que puedes buscar en la pagina oficial:
+
+            English:
+            https://en.wikipedia.org/wiki/${wikiQuery}
+
+            Español:
+            https://es.wikipedia.org/wiki/${wikiQuery}
+            `,
+        })
       } else {
         // Only One Result
         const embed = new MessageEmbed()
           .setColor(config.embedColor)
           .setTitle(response.title)
-          .setThumbnail(response.thumbnail.source)
+          .setImage(response.thumbnail.source)
           .setURL(response.content_urls.desktop.page)
           .setDescription(response.extract)
         message.channel.send(embed)
       }
     } catch {
-      return message.reply('Coloca alguna cosa para buscar ;)') // If Searched Query Is Not Available
+      return sendEmbedError({
+        msg: message,
+        title: `Bucando ${wikiQuery}?`,
+        description: `
+            Por alguna razon Wikipedia no encontro algun resultado pero puede ser problema de la API, asi que puedes buscar en la pagina oficial:
+
+            English:
+            https://en.wikipedia.org/wiki/${wikiQuery}
+
+            Español:
+            https://es.wikipedia.org/wiki/${wikiQuery}
+            `,
+      })
     }
   } else {
-    return message.reply('Coloca alguna cosa para buscar ;)') // If Searched Query Is Not Available
+    return sendEmbedError({
+      msg: message,
+      title: 'Error con la query!',
+      description: 'Escribe algo correcto para buscarlo en la wikipedia! ;D',
+    })
   }
 }
 
