@@ -42,35 +42,39 @@ client.on('message', (msg) => {
   if (msg.author === client.user) return
   if (msg.author.bot) return
 
-  const args = msg.content.toLocaleLowerCase().slice(config.prefix.length).trim().split(/ +/g)
-  const command = args.shift().toLowerCase()
-  console.log(`Command: ${command}`)
+  const msgContent = msg.content
 
-  try {
-    switch (command) {
-      case 'ping':
-        pingPong(msg)
-        break
-      case 'avatar':
-        avatar(msg)
-        break
-      case 'suggest':
-      case 'sug':
-        suggest(msg, args, command)
-        break
-      case 'hola' || 'Hola':
-        hola(msg)
-        break
-      case 'help':
-        help(msg, client)
-        break
-      case 'wiki':
-      case 'search':
-        wiki(msg, args)
-        break
+  if (msgContent.startsWith('!')) {
+    const args = msgContent.toLocaleLowerCase().slice(config.prefix.length).trim().split(/ +/g)
+    const command = args.shift().toLowerCase()
+    console.log(`Command: ${command}`)
+
+    try {
+      switch (command) {
+        case 'ping':
+          pingPong(msg)
+          break
+        case 'avatar':
+          avatar(msg)
+          break
+        case 'suggest':
+        case 'sug':
+          suggest(msg, args, command)
+          break
+        case 'hola' || 'Hola':
+          hola(msg)
+          break
+        case 'help':
+          help(msg, client)
+          break
+        case 'wiki':
+        case 'search':
+          wiki(msg, args)
+          break
+      }
+    } catch (err) {
+      console.error(err)
     }
-  } catch (err) {
-    console.error(err)
   }
 })
 
