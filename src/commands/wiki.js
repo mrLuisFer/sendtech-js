@@ -1,7 +1,7 @@
 const { MessageEmbed } = require('discord.js')
 const fetch = require('node-fetch')
 const config = require('../../config.js')
-const sendEmbedError = require('../utils/functions/sendEmbedError.js')
+const sendEmbedError = require('../utils/sendEmbedError.js')
 
 const wiki = async (message, args) => {
   if (args === undefined || !args) return message.reply('Escribe el item a buscar') // If Nothing Is Searched
