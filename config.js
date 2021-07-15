@@ -1,6 +1,6 @@
 require('dotenv').config()
 
-const token = 'Tu Token';
+const token = '';
 
 module.exports = {
   prefix: '!',
