@@ -8,6 +8,7 @@ const pingPong = require('./commands/ping.js')
 const suggest = require('./commands/suggest.js')
 const help = require('./commands/help.js')
 const wiki = require('./commands/wiki.js')
+const gif = require('./commands/gif.js')
 
 // El intents le da permiso para dar roles y dar la bienvenida
 const client = new Client({ ws: { intents: 32767 } })
@@ -49,6 +50,10 @@ client.on('message', (msg) => {
     console.log(`Command: ${command}`)
 
     try {
+      /*
+       *  TODO: Buscar una manera de ejecutar los comandos
+       *  de manera que sea rapida y eficiente para el servidor
+       */
       switch (command) {
         case 'ping':
           pingPong(msg)
@@ -69,6 +74,9 @@ client.on('message', (msg) => {
         case 'wiki':
         case 'search':
           wiki(msg, args)
+          break
+        case 'gif':
+          gif(msg, args)
           break
       }
     } catch (err) {

@@ -21,7 +21,7 @@ const wiki = async (message, args) => {
       return sendEmbedError({
         msg: message,
         title: 'Error al obtener la data',
-        description: 'Espera a que se repare la llamada a la API e intenta de nuevo',
+        description: 'Espera a que se repare la llamada a la API e intenta de nuevo'
       })
     }
 
@@ -38,7 +38,7 @@ const wiki = async (message, args) => {
 
             Español:
             https://es.wikipedia.org/wiki/${wikiQuery}
-            `,
+            `
         })
       } else {
         // Only One Result
@@ -62,14 +62,14 @@ const wiki = async (message, args) => {
 
             Español:
             https://es.wikipedia.org/wiki/${wikiQuery}
-            `,
+            `
       })
     }
   } else {
     return sendEmbedError({
       msg: message,
       title: 'Error con la query!',
-      description: 'Escribe algo correcto para buscarlo en la wikipedia! ;D',
+      description: 'Escribe algo correcto para buscarlo en la wikipedia! ;D'
     })
   }
 }
