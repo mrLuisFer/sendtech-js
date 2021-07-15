@@ -17,23 +17,36 @@ const gif = async (msg, args) => {
   }
   console.log(rating)
 
-  try {
-    const giphyBaseUrl = `https://api.giphy.com/v1/gifs/search?api_key=${config.GIPHY_API_KEY}&limit=${length}&rating=${rating}&q=`
-    const giphyUrlQuery = `${giphyBaseUrl}${args}`
+  if (args[0] === '--random' || args[0] === 'random') {
+    const giphyRandomUrl = `https://api.giphy.com/v1/gifs/random?api_key=${config.GIPHY_API_KEY}&rating=g&tag=programming`
 
-    const response = await fetch(giphyUrlQuery)
-    const giphyData = await response.json()
-    // console.log(giphyData)
+    const response = await fetch(giphyRandomUrl)
+    const giphyRandomData = await response.json()
 
-    if (giphyData.data.length === 0) return msg.reply('No se ha encontrado ningún gif')
+    console.log(giphyRandomData)
 
-    const randomIdNumber = Math.floor(Math.random() * giphyData.data.length)
-    const gifUrl = giphyData.data[randomIdNumber].images.original.url
+    const gifUrl = giphyRandomData.data.images.original.url
 
-    return msg.reply(gifUrl)
-  } catch (err) {
-    console.log(err)
-    return msg.reply('No se ha encontrado ningún gif')
+    msg.reply(gifUrl)
+  } else {
+    const giphySearchUrl = `https://api.giphy.com/v1/gifs/search?api_key=${config.GIPHY_API_KEY}&limit=${length}&rating=${rating}&q=`
+
+    const giphyUrlQuery = `${giphySearchUrl}${args}`
+
+    try {
+      const response = await fetch(giphyUrlQuery)
+      const giphyData = await response.json()
+
+      if (giphyData.data.length === 0) return msg.reply('No se ha encontrado ningún gif')
+
+      const randomIdNumber = Math.floor(Math.random() * giphyData.data.length)
+      const gifUrl = giphyData.data[randomIdNumber].images.original.url
+
+      return msg.reply(gifUrl)
+    } catch (err) {
+      console.log(err)
+      return msg.reply('No se ha encontrado ningún gif')
+    }
   }
 }
 
