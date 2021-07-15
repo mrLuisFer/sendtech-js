@@ -3,15 +3,19 @@ const fetch = require('node-fetch')
 
 /**
  * @param {Message} msg
- * @param {number} rating
+ * @param {string} rating
  */
 const randomSearch = async (msg, rating) => {
-  const giphyRandomUrl = `https://api.giphy.com/v1/gifs/random?api_key=${config.GIPHY_API_KEY}&rating=g&tag=programming`
+  const randomTags = ['code', 'development', 'programming', 'gaming', 'hacker']
+  const randomIdNumber = Math.floor(Math.random() * randomTags.length)
+
+  console.log(randomTags[randomIdNumber])
+  const giphyRandomUrl = `https://api.giphy.com/v1/gifs/random?api_key=${config.GIPHY_API_KEY}&rating=${rating}&tag=${randomTags[randomIdNumber]}`
 
   const response = await fetch(giphyRandomUrl)
   const giphyRandomData = await response.json()
 
-  console.log(giphyRandomData)
+  // console.log(giphyRandomData)
 
   const gifUrl = giphyRandomData.data.images.original.url
 

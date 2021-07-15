@@ -12,8 +12,8 @@ module.exports = {
     {
       files: '*.{js,jsx,tsx,ts,scss,json,html}',
       options: {
-        tabWidth: 2,
-      },
-    },
-  ],
+        tabWidth: 2
+      }
+    }
+  ]
 }
