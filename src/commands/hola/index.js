@@ -3,7 +3,7 @@
 const { MessageEmbed } = require('discord.js')
 const config = require('../../../config.js')
 const palabras = require('./palabras')
-const { getRandomNumber } = require('../../utils/getRandomNumber')
+const getRandomNumber = require('../../utils/getRandomNumber')
 
 /**
  * @function hola
