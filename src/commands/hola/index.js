@@ -3,6 +3,7 @@
 const { MessageEmbed } = require('discord.js')
 const config = require('../../../config.js')
 const palabras = require('./palabras')
+const getRandomNumber = require('../../utils/getRandomNumber')
 
 /**
  * @function hola
@@ -11,7 +12,7 @@ const palabras = require('./palabras')
  */
 const hola = (msg) => {
   if (msg.content === `${config.prefix}hola` || msg.content === 'hola') {
-    const palabraFinal = palabras[Math.floor(Math.random() * palabras.length)]
+    const palabraFinal = palabras[getRandomNumber(palabras.length)]
 
     const embed = new MessageEmbed()
       .setTitle(palabraFinal)

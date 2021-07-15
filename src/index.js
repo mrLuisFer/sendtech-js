@@ -8,15 +8,15 @@ const pingPong = require('./commands/ping.js')
 const suggest = require('./commands/suggest.js')
 const help = require('./commands/help.js')
 const wiki = require('./commands/wiki.js')
+const gif = require('./commands/gif')
 
 // El intents le da permiso para dar roles y dar la bienvenida
 const client = new Client({ ws: { intents: 32767 } })
 
 // Hace algo cuando el bot esta online
 client.on('ready', () => {
-  console.log(client.user.tag, 'Esta conectado')
   console.log('Estado del bot:', client.user.presence.status)
-
+  console.log('100% [██████████] Cargado')
   presence(client)
 })
 
@@ -30,9 +30,8 @@ client.on('guildMemberAdd', (member) => {
     .setTitle(`Bienvenid@ ${member.displayName} `)
     .setDescription('Recuerda aprender y compartir tus conocimientos con toda SendTech Community')
     .setColor(config.embedColor)
-    .setImage(
-      'https://i.ibb.co/31q6GYR/BIENVENIDA.png'
-    )
+    .setImage('https://i.ibb.co/31q6GYR/BIENVENIDA.png')
+
     .setAuthor(member.displayName, member.user.displayAvatarURL())
   channelWelcome.send(embed).then((member) => member.react('👋'))
 })
@@ -50,6 +49,10 @@ client.on('message', (msg) => {
     console.log(`Command: ${command}`)
 
     try {
+      /*
+       *  TODO: Buscar una manera de ejecutar los comandos
+       *  de manera que sea rapida y eficiente para el servidor
+       */
       switch (command) {
         case 'ping':
           pingPong(msg)
@@ -70,6 +73,9 @@ client.on('message', (msg) => {
         case 'wiki':
         case 'search':
           wiki(msg, args)
+          break
+        case 'gif':
+          gif(msg, args)
           break
       }
     } catch (err) {
