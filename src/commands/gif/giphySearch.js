@@ -1,6 +1,6 @@
 const config = require('../../../config')
 const fetch = require('node-fetch')
-const { getRandomNumber } = require('../../utils/getRandomNumber')
+const getRandomNumber = require('../../utils/getRandomNumber')
 
 /**
  * @param {Message} msg

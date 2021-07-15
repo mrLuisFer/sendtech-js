@@ -3,8 +3,9 @@
  * @param {number} legth
  * @returns number
  */
-const getRandomNumber = (legth = 5) => {
-  return Math.floor(Math.random() * legth)
+function getRandomNumber(legth = 5) {
+  const randomNumber = Math.floor(Math.random() * legth)
+  return randomNumber
 }
 
-module.export = getRandomNumber
+module.exports = getRandomNumber
