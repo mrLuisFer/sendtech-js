@@ -1,5 +1,6 @@
 const config = require('../../../config')
 const fetch = require('node-fetch')
+const { getRandomNumber } = require('../../utils/getRandomNumber')
 
 /**
  * @param {Message} msg
@@ -7,7 +8,7 @@ const fetch = require('node-fetch')
  */
 const randomSearch = async (msg, rating) => {
   const randomTags = ['code', 'development', 'programming', 'gaming', 'hacker']
-  const randomIdNumber = Math.floor(Math.random() * randomTags.length)
+  const randomIdNumber = getRandomNumber(randomTags.length)
 
   console.log(randomTags[randomIdNumber])
   const giphyRandomUrl = `https://api.giphy.com/v1/gifs/random?api_key=${config.GIPHY_API_KEY}&rating=${rating}&tag=${randomTags[randomIdNumber]}`

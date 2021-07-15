@@ -8,6 +8,8 @@ const config = require('../../config')
 function presence(client) {
   setInterval(() => {
     const botStatus = config.statusBOT
+    // Por alguna razon, al usar la funcion getRandomNumber, no se puede
+    // usar con el status del bot
     const status = Math.floor(Math.random() * botStatus.length)
     const statusName = botStatus[status]
 
@@ -15,8 +17,8 @@ function presence(client) {
       status: 'online',
       activity: {
         name: `${statusName}`,
-        type: 'WATCHING',
-      },
+        type: 'WATCHING'
+      }
     })
   }, 5000)
 }

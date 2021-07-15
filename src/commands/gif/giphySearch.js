@@ -1,5 +1,6 @@
 const config = require('../../../config')
 const fetch = require('node-fetch')
+const { getRandomNumber } = require('../../utils/getRandomNumber')
 
 /**
  * @param {Message} msg
@@ -19,7 +20,7 @@ const giphySearch = async (msg, args, rating) => {
 
     if (giphyData.data.length === 0) return msg.reply('No se ha encontrado ningún gif')
 
-    const randomIdNumber = Math.floor(Math.random() * giphyData.data.length)
+    const randomIdNumber = getRandomNumber(giphyData.data.length)
     const gifUrl = giphyData.data[randomIdNumber].images.original.url
 
     return msg.reply(gifUrl)
