@@ -8,7 +8,7 @@ const pingPong = require('./commands/ping.js')
 const suggest = require('./commands/suggest.js')
 const help = require('./commands/help.js')
 const wiki = require('./commands/wiki.js')
-const gif = require('./commands/gif.js')
+const gif = require('./commands/gif')
 
 // El intents le da permiso para dar roles y dar la bienvenida
 const client = new Client({ ws: { intents: 32767 } })
