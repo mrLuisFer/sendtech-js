@@ -9,7 +9,7 @@ const wiki = async (message, args) => {
   console.log(wikiQuery)
 
   if (wikiQuery !== undefined) {
-    const baseUrl = `https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(
+    const baseUrl = `https://es.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(
       wikiQuery
     )}` // From Here BOT Will Search For It
 
