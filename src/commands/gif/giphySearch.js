@@ -7,7 +7,7 @@ const fetch = require('node-fetch')
  * @param {number} rating
  */
 const giphySearch = async (msg, args, rating) => {
-  const length = 5
+  const length = 10
 
   const giphySearchUrl = `https://api.giphy.com/v1/gifs/search?api_key=${config.GIPHY_API_KEY}&limit=${length}&rating=${rating}&q=`
 
