@@ -9,9 +9,11 @@ const suggest = require('./commands/suggest.js')
 const help = require('./commands/help.js')
 const wiki = require('./commands/wiki.js')
 const gif = require('./commands/gif')
+const testButton = require('./commands/tests/testButton.js')
 
 // El intents le da permiso para dar roles y dar la bienvenida
 const client = new Client({ ws: { intents: 32767 } })
+require('discord-buttons')(client)
 
 // Hace algo cuando el bot esta online
 client.on('ready', () => {
@@ -76,6 +78,9 @@ client.on('message', (msg) => {
           break
         case 'gif':
           gif(msg, args)
+          break
+        case 'testbtn':
+          testButton(msg)
           break
       }
     } catch (err) {
