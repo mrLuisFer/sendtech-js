@@ -80,7 +80,7 @@ client.on('message', (msg) => {
           gif(msg, args)
           break
         case 'testbtn':
-          testButton(msg)
+          testButton(msg, client)
           break
       }
     } catch (err) {
