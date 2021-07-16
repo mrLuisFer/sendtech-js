@@ -20,7 +20,8 @@ const testButton = (msg, client) => {
       console.log(`Ejecutando ${button.id}`)
       await button.channel.send('Clickeado')
     }
-    button.defer()
+
+    await button.reply.defer()
   })
 }
 
