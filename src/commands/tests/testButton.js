@@ -1,4 +1,5 @@
 const { MessageButton, MessageActionRow } = require('discord-buttons')
+const clipboardy = require('clipboardy')
 
 const testButton = (msg, client) => {
   const button2Id = 'second_button_function'
@@ -19,6 +20,8 @@ const testButton = (msg, client) => {
     if (button.id === button2Id) {
       console.log(`Ejecutando ${button.id}`)
       await button.channel.send('Clickeado')
+
+      clipboardy.writeSync('https://discord.gg/4FUtbhatAg')
     }
 
     await button.reply.defer()
