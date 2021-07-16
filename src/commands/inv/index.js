@@ -2,6 +2,7 @@ const { MessageEmbed } = require('discord.js')
 const { MessageButton, MessageActionRow } = require('discord-buttons')
 const clipboardy = require('clipboardy')
 const config = require('../../../config')
+const welcomeEmbed = require('../../utils/welcomeEmbed')
 
 /**
  * @function invitation
@@ -10,6 +11,7 @@ const config = require('../../../config')
  */
 const invitation = (msg, client) => {
   const copyUrlBtnId = 'copyUrlBtnId'
+  const showWelcomeEmbedId = 'showWelcomeEmbed'
 
   const sendToServerBtn = new MessageButton()
     .setURL(config.serverUrl)
@@ -23,7 +25,13 @@ const invitation = (msg, client) => {
     .setID(copyUrlBtnId)
     .setEmoji('⚡')
 
-  const row = new MessageActionRow().addComponents(copyUrlBtn, sendToServerBtn)
+  const showWelcomeEmbedBtn = new MessageButton()
+    .setStyle('blurple')
+    .setLabel('Mostrar mensaje de bienvenida!')
+    .setID(showWelcomeEmbedId)
+    .setEmoji('🎉')
+
+  const row = new MessageActionRow().addComponents(copyUrlBtn, sendToServerBtn, showWelcomeEmbedBtn)
 
   msg.channel.send(`Invita a tus amigos al servidor! 📎${config.serverUrl}`, row)
 
@@ -49,6 +57,8 @@ const invitation = (msg, client) => {
       await button.channel.send(embed)
 
       await button.channel.send('Copiado!')
+    } else if (button.id === showWelcomeEmbedId) {
+      await button.channel.send(welcomeEmbed())
     }
 
     await button.reply.defer()
