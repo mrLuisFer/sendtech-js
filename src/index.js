@@ -1,4 +1,4 @@
-const { Client, MessageEmbed } = require('discord.js')
+const { Client } = require('discord.js')
 const config = require('../config.js')
 const presence = require('./utils/presence.js')
 // Commands
@@ -10,6 +10,8 @@ const help = require('./commands/help.js')
 const wiki = require('./commands/wiki.js')
 const gif = require('./commands/gif')
 const testButton = require('./commands/tests/testButton.js')
+const invitation = require('./commands/inv/index.js')
+const welcomeEmbed = require('./utils/welcomeEmbed')
 
 // El intents le da permiso para dar roles y dar la bienvenida
 const client = new Client({ ws: { intents: 32767 } })
@@ -28,13 +30,8 @@ client.on('guildMemberAdd', (member) => {
   // add Rol Member
   member.roles.add('790977106698960918')
   // Msg Welcome user
-  const embed = new MessageEmbed()
-    .setTitle(`Bienvenid@ ${member.displayName} `)
-    .setDescription('Recuerda aprender y compartir tus conocimientos con toda SendTech Community')
-    .setColor(config.embedColor)
-    .setImage('https://i.ibb.co/31q6GYR/BIENVENIDA.png')
+  const embed = welcomeEmbed(member)
 
-    .setAuthor(member.displayName, member.user.displayAvatarURL())
   channelWelcome.send(embed).then((member) => member.react('👋'))
 })
 
@@ -81,6 +78,9 @@ client.on('message', (msg) => {
           break
         case 'testbtn':
           testButton(msg, client)
+          break
+        case 'inv':
+          invitation(msg, client)
           break
       }
     } catch (err) {
