@@ -42,6 +42,7 @@ const invitation = (msg, client) => {
       clipboardy.writeSync('https://discord.gg/4FUtbhatAg')
 
       const embed = new MessageEmbed()
+        .setAuthor(client.user.username, client.user.displayAvatarURL())
         .setTitle('Mensaje copiado?')
         .setDescription(
           `Si estas utilizando Windows, puedes intentar copiar el mensaje e intentar pegarlo con \`ctrl + v \` 
