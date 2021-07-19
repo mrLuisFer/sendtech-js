@@ -1,4 +1,5 @@
-const { Client, MessageEmbed } = require('discord.js')
+const { Client, MessageEmbed } = require('discord.js');
+const disbut = require("discord-buttons");
 const config = require('../config.js')
 const presence = require('./utils/presence.js')
 // Commands
@@ -9,10 +10,10 @@ const suggest = require('./commands/suggest.js')
 const help = require('./commands/help.js')
 const wiki = require('./commands/wiki.js')
 const gif = require('./commands/gif')
+const npm = require('./commands/npm.js')
 
 // El intents le da permiso para dar roles y dar la bienvenida
 const client = new Client({ ws: { intents: 32767 } })
-
 // Hace algo cuando el bot esta online
 client.on('ready', () => {
   console.log('Estado del bot:', client.user.presence.status)
@@ -56,6 +57,9 @@ client.on('message', (msg) => {
       switch (command) {
         case 'ping':
           pingPong(msg)
+          break
+        case 'npm':
+          npm(msg, args)
           break
         case 'avatar':
           avatar(msg)
