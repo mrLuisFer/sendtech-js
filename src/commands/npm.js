@@ -5,8 +5,6 @@ const fetch = require('node-fetch')
 const npm = async (msg, args) => {
     const response = await fetch(`https://api.npms.io/v2/package/${args}`)
     const data = await response.json()
-
-    console.log(data)
     if (
       data !== null &&
       data !== undefined &&

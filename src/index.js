@@ -11,6 +11,7 @@ const help = require('./commands/help.js')
 const wiki = require('./commands/wiki.js')
 const gif = require('./commands/gif')
 const npm = require('./commands/npm.js')
+const url = require('./commands/URLcutter.js')
 
 // El intents le da permiso para dar roles y dar la bienvenida
 const client = new Client({ ws: { intents: 32767 } })
@@ -60,6 +61,9 @@ client.on('message', (msg) => {
           break
         case 'npm':
           npm(msg, args)
+          break
+        case 'url':
+          url(msg, args)
           break
         case 'avatar':
           avatar(msg)
