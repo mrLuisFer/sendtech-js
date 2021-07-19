@@ -11,7 +11,6 @@ const welcomeEmbed = require('../../utils/welcomeEmbed')
  */
 const invitation = (msg, client) => {
   const copyUrlBtnId = 'copyUrlBtnId'
-  const showWelcomeEmbedId = 'showWelcomeEmbed'
 
   const sendToServerBtn = new MessageButton()
     .setURL(config.serverUrl)
@@ -26,34 +25,31 @@ const invitation = (msg, client) => {
     .setEmoji('⚡')
 
   const row = new MessageActionRow().addComponents(copyUrlBtn, sendToServerBtn)
-
-  msg.channel.send(`Invita a tus amigos al servidor! 📎${config.serverUrl}`, row)
+  const embed = new MessageEmbed()
+  .setTitle('Invita a tus amigos al servidor')
+  .setFooter(`📌 ${config.serverUrl}`)
+  .setColor(config.embedColor)
+  msg.channel.send(embed, row)
 
   client.on('clickButton', async (button) => {
     if (button.id === copyUrlBtnId) {
       console.log(`Ejecutando ${button.id}`)
       console.log(button.guild)
       clipboardy.writeSync('https://discord.gg/4FUtbhatAg')
-
-      const embed = new MessageEmbed()
-        .setAuthor(client.user.username, client.user.displayAvatarURL())
-        .setTitle('Mensaje copiado?')
-        .setDescription(
-          `Si estas utilizando Windows, puedes intentar copiar el mensaje e intentar pegarlo con \`ctrl + v \` 
-           
-           Pero por alguna razon windows no permite interacturar con el portapapeles, aunque puedes copiar el url directamente
+      // const embed = new MessageEmbed()
+      //   .setAuthor(client.user.username, client.user.displayAvatarURL())
+      //   .setTitle('Mensaje copiado?')
+      //   .setDescription(
+      //     `
+      //     Aveces en windows no funciona, ve si te copio la url si no copia la url que esta mas arriba
           
-           Si estas en **Linux** o **Mac**, ignora este mensaje :)
-          `
-        )
-        .setColor(config.embedColor)
-        .setThumbnail('https://media.giphy.com/media/MJTOHmGiGPHgI/giphy.gif')
+      //      Si estas en **Linux** o **Mac**, ignora este mensaje :)
+      //     `
+      //   )
+      //   .setColor(config.embedColor)
+      //   .setThumbnail('https://media.giphy.com/media/MJTOHmGiGPHgI/giphy.gif')
 
-      await button.channel.send(embed)
-
-      await button.channel.send('Copiado!')
-    } else if (button.id === showWelcomeEmbedId) {
-      await button.channel.send(welcomeEmbed())
+      // await button.channel.send(embed)
     }
 
     await button.reply.defer()
