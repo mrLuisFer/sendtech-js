@@ -17,9 +17,6 @@ const client = new Client({ ws: { intents: 32767 } })
 const testButton = require('./commands/tests/testButton.js')
 const invitation = require('./commands/inv/index.js')
 const welcomeEmbed = require('./utils/welcomeEmbed')
-
-// El intents le da permiso para dar roles y dar la bienvenida
-const client = new Client({ ws: { intents: 32767 } })
 require('discord-buttons')(client)
 
 // Hace algo cuando el bot esta online
