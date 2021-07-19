@@ -25,13 +25,7 @@ const invitation = (msg, client) => {
     .setID(copyUrlBtnId)
     .setEmoji('⚡')
 
-  const showWelcomeEmbedBtn = new MessageButton()
-    .setStyle('blurple')
-    .setLabel('Mostrar mensaje de bienvenida!')
-    .setID(showWelcomeEmbedId)
-    .setEmoji('🎉')
-
-  const row = new MessageActionRow().addComponents(copyUrlBtn, sendToServerBtn, showWelcomeEmbedBtn)
+  const row = new MessageActionRow().addComponents(copyUrlBtn, sendToServerBtn)
 
   msg.channel.send(`Invita a tus amigos al servidor! 📎${config.serverUrl}`, row)
 
