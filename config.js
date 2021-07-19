@@ -1,7 +1,7 @@
 require('dotenv').config()
 
-const token = process.env.DISCORD_BOT_TOKEN
-const giphyKey = process.env.GIPHY_API_KEY
+const token = process.env.DISCORD_BOT_TOKEN;
+const giphyKey = process.env.GIPHY_API_KEY;
 
 module.exports = {
   prefix: '!',

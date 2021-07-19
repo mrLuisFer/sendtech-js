@@ -1,4 +1,5 @@
-const { Client } = require('discord.js')
+const { Client, MessageEmbed } = require('discord.js');
+const disbut = require("discord-buttons");
 const config = require('../config.js')
 const presence = require('./utils/presence.js')
 // Commands
@@ -9,6 +10,10 @@ const suggest = require('./commands/suggest.js')
 const help = require('./commands/help.js')
 const wiki = require('./commands/wiki.js')
 const gif = require('./commands/gif')
+const npm = require('./commands/npm.js')
+
+// El intents le da permiso para dar roles y dar la bienvenida
+const client = new Client({ ws: { intents: 32767 } })
 const testButton = require('./commands/tests/testButton.js')
 const invitation = require('./commands/inv/index.js')
 const welcomeEmbed = require('./utils/welcomeEmbed')
@@ -55,6 +60,9 @@ client.on('message', (msg) => {
       switch (command) {
         case 'ping':
           pingPong(msg)
+          break
+        case 'npm':
+          npm(msg, args)
           break
         case 'avatar':
           avatar(msg)
