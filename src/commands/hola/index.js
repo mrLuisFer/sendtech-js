@@ -11,7 +11,7 @@ const getRandomNumber = require('../../utils/getRandomNumber')
  * @returns {void} void
  */
 const hola = (msg) => {
-  if (msg.content === `${config.prefix}hola` || msg.content === 'hola') {
+  if (msg.content === `${config.prefix}hola` || msg.content === 'Hola') {
     const palabraFinal = palabras[getRandomNumber(palabras.length)]
 
     const embed = new MessageEmbed()

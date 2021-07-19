@@ -7,6 +7,7 @@ module.exports = {
   prefix: '!',
   BOT_TOKEN: token,
   GIPHY_API_KEY: giphyKey,
+  serverUrl: 'https://discord.gg/4FUtbhatAg',
   statusBOT: ['mi prefix !', 'Talleres', 'a SendTech', 'Tiktoks'],
   embedColor: 0xf75762
 }

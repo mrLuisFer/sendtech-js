@@ -15,6 +15,11 @@ const url = require('./commands/URLcutter.js')
 
 // El intents le da permiso para dar roles y dar la bienvenida
 const client = new Client({ ws: { intents: 32767 } })
+const testButton = require('./commands/tests/testButton.js')
+const invitation = require('./commands/inv/index.js')
+const welcomeEmbed = require('./utils/welcomeEmbed')
+require('discord-buttons')(client)
+
 // Hace algo cuando el bot esta online
 client.on('ready', () => {
   console.log('Estado del bot:', client.user.presence.status)
@@ -28,13 +33,8 @@ client.on('guildMemberAdd', (member) => {
   // add Rol Member
   member.roles.add('790977106698960918')
   // Msg Welcome user
-  const embed = new MessageEmbed()
-    .setTitle(`Bienvenid@ ${member.displayName} `)
-    .setDescription('Recuerda aprender y compartir tus conocimientos con toda SendTech Community')
-    .setColor(config.embedColor)
-    .setImage('https://i.ibb.co/31q6GYR/BIENVENIDA.png')
+  const embed = welcomeEmbed(member)
 
-    .setAuthor(member.displayName, member.user.displayAvatarURL())
   channelWelcome.send(embed).then((member) => member.react('👋'))
 })
 
@@ -84,6 +84,12 @@ client.on('message', (msg) => {
           break
         case 'gif':
           gif(msg, args)
+          break
+        case 'testbtn':
+          testButton(msg, client)
+          break
+        case 'inv':
+          invitation(msg, client)
           break
       }
     } catch (err) {
