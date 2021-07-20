@@ -12,11 +12,11 @@ const wiki = require('./commands/wiki.js')
 const gif = require('./commands/gif')
 const npm = require('./commands/npm.js')
 const url = require('./commands/URLcutter.js')
-
+const invitation = require('./commands/inv.js')
+const ticket = require('./commands/tickets.js')
+const rename = require('./commands/renameChannel.js')
 // El intents le da permiso para dar roles y dar la bienvenida
 const client = new Client({ ws: { intents: 32767 } })
-const testButton = require('./commands/tests/testButton.js')
-const invitation = require('./commands/inv/index.js')
 const welcomeEmbed = require('./utils/welcomeEmbed')
 require('discord-buttons')(client)
 
@@ -48,7 +48,6 @@ client.on('message', (msg) => {
   if (msgContent.startsWith('!')) {
     const args = msgContent.toLocaleLowerCase().slice(config.prefix.length).trim().split(/ +/g)
     const command = args.shift().toLowerCase()
-    console.log(`Command: ${command}`)
 
     try {
       /*
@@ -90,6 +89,12 @@ client.on('message', (msg) => {
           break
         case 'inv':
           invitation(msg, client)
+          break
+        case 'ticket':
+          ticket(msg, client)
+          break
+        case 'rename':
+          rename(msg, args)
           break
       }
     } catch (err) {
