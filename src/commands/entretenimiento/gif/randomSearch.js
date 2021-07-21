@@ -1,12 +1,14 @@
-const config = require('../../../config')
+const { MessageEmbed } = require('discord.js')
+const config = require('../../../../config')
 const fetch = require('node-fetch')
-const getRandomNumber = require('../../utils/getRandomNumber')
+const getRandomNumber = require('../../../utils/getRandomNumber')
 
 /**
  * @param {Message} msg
  * @param {string} rating
  */
 const randomSearch = async (msg, rating) => {
+  try {
   const randomTags = ['code', 'development', 'programming', 'gaming', 'hacker']
   const randomIdNumber = getRandomNumber(randomTags.length)
 
@@ -16,11 +18,13 @@ const randomSearch = async (msg, rating) => {
   const response = await fetch(giphyRandomUrl)
   const giphyRandomData = await response.json()
 
-  // console.log(giphyRandomData)
-
   const gifUrl = giphyRandomData.data.images.original.url
-
-  msg.reply(gifUrl)
 }
-
+catch (err) {
+  const embed = new MessageEmbed()
+  .setTitle('No se ha encontrado ningún gif')
+  .setColor(config.embedColor)
+  return msg.channel.send(embed)
+}
+} 
 module.exports = randomSearch

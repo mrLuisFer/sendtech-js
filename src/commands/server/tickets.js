@@ -1,6 +1,6 @@
 const { MessageEmbed } = require('discord.js')
-const { MessageButton, MessageActionRow } = require('discord-buttons')
-const config = require('../../config')
+const { MessageButton } = require('discord-buttons')
+const config = require('../../../config')
 
 const ticket = (msg, client) => {
   const openTicket = new MessageButton()
@@ -15,35 +15,29 @@ const ticket = (msg, client) => {
     .setColor(config.embedColor)
     msg.channel.send(embed, openTicket)
     
-    
-    let e = msg.guild.channels.cache.find(canal => {
-        canal.name === `${msg.author.username}-st`});
-    if (e){
-        console.log(e);
-        return msg.channel.send("No puedes crear otro ticket")
-    }
-    
 client.on('clickButton', (button) => {
+    const everyone = msg.guild.roles.cache.find(rol => rol.name === '@everyone');
+    const admins = msg.guild.roles.cache.find(rol => rol.name === 'admin');
+    const clickButton = button.clicker.user.username.toLowerCase();
     if (button.id === 'open-ticket') {
-        const everyone = msg.guild.roles.cache.find(rol => rol.name === '@everyone');
-        const admins = msg.guild.roles.cache.find(rol => rol.name === 'Desarrolladores');
-        
-        msg.guild.channels.create(`${msg.author.username}-st`, {
+        msg.guild.channels.create(`${clickButton}-st`, {
+            // Permisos para el canal
             permissionOverwrites: [
                 {
                     id: everyone.id,
-                    deny: ["VIEW_CHANNEL", "SEND_MESSAGES"]
+                    deny: ['VIEW_CHANNEL', 'SEND_MESSAGES']
                 },
                 {
                     id: admins.id,  
-                    allow: ["VIEW_CHANNEL", "SEND_MESSAGES"]
+                    allow: ['VIEW_CHANNEL', 'SEND_MESSAGES']
                 },
                 {
                     id: msg.author.id,
-                    allow: ["VIEW_CHANNEL", "SEND_MESSAGES"]
+                    allow: ['VIEW_CHANNEL', 'SEND_MESSAGES']
                 }
-            ],
-            parent: "866861620646641685"
+            ], 
+            // Que aparezca en una categoria padre
+            parent: '859459585689124865'
         })
         .then(msg => {
             // opciones en el ticket
@@ -58,7 +52,7 @@ client.on('clickButton', (button) => {
             msg.send(embed, closeTicket)
         })
     }
-    if (button.id === 'close-ticket') {
+    else if (button.id === 'close-ticket') {
         button.channel.delete() 
     }
   })

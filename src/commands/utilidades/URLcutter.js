@@ -1,5 +1,3 @@
-const { MessageEmbed } = require('discord.js')
-const config = require('../../config.js')
 const fetch = require('node-fetch')
 
 const url = async (msg, args) => {
@@ -14,7 +12,7 @@ const url = async (msg, args) => {
     //     "domain": "bit.ly",  
     //     "long_url": "https://dev.bitly.com"  
     // }  
-    //167134afe300d357f314b48142a8f006e76a9c49
+    // 167134afe300d357f314b48142a8f006e76a9c49
 }
 
 module.exports = url
