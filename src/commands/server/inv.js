@@ -2,7 +2,6 @@ const { MessageEmbed } = require('discord.js')
 const { MessageButton, MessageActionRow } = require('discord-buttons')
 const clipboardy = require('clipboardy')
 const config = require('../../../config')
-const welcomeEmbed = require('../../utils/welcomeEmbed')
 
 /**
  * @function invitation

@@ -1,21 +1,28 @@
-const { Client, MessageEmbed } = require('discord.js');
-const disbut = require("discord-buttons");
-const config = require('../config.js')
+const { Client } = require('discord.js');
+const config = require('../config')
 const presence = require('./utils/presence.js')
 // Commands
-const avatar = require('./commands/avatar.js')
-const hola = require('./commands/hola')
-const pingPong = require('./commands/ping.js')
-const suggest = require('./commands/suggest.js')
-const help = require('./commands/help.js')
-const wiki = require('./commands/wiki.js')
-const gif = require('./commands/gif')
-const npm = require('./commands/npm.js')
+// Entretenimiento
+const gif = require('./commands/entretenimiento/gif');
+const hola = require('./commands/entretenimiento/hola');
+const ball = require('./commands/entretenimiento/8ball.js')
+const avatar = require('./commands/entretenimiento/avatar.js');
+// Server
+const invitation = require('./commands/server/inv.js');
+const suggest = require('./commands/server/suggest.js');
+const ticket = require('./commands/server/tickets.js');
+// Utilidades
+const help = require('./commands/utilidades/help.js');
+const npm = require('./commands/utilidades/npm.js');
+const pingPong = require('./commands/utilidades/ping');
+const url = require('./commands/utilidades/URLcutter.js');
+const wiki = require('./commands/utilidades/wiki.js');
+// admin
+const renameChannel = require('./commands/admin/renameChannel.js');
+const deleteChannel = require('./commands/admin/deleteChannel.js')
 
 // El intents le da permiso para dar roles y dar la bienvenida
 const client = new Client({ ws: { intents: 32767 } })
-const testButton = require('./commands/tests/testButton.js')
-const invitation = require('./commands/inv/index.js')
 const welcomeEmbed = require('./utils/welcomeEmbed')
 require('discord-buttons')(client)
 
@@ -44,10 +51,9 @@ client.on('message', (msg) => {
 
   const msgContent = msg.content
 
-  if (msgContent.startsWith('!')) {
+  if (msgContent.startsWith(config.prefix)) {
     const args = msgContent.toLocaleLowerCase().slice(config.prefix.length).trim().split(/ +/g)
     const command = args.shift().toLowerCase()
-    console.log(`Command: ${command}`)
 
     try {
       /*
@@ -60,6 +66,9 @@ client.on('message', (msg) => {
           break
         case 'npm':
           npm(msg, args)
+          break
+        case 'url':
+          url(msg, args)
           break
         case 'avatar':
           avatar(msg)
@@ -81,12 +90,21 @@ client.on('message', (msg) => {
         case 'gif':
           gif(msg, args)
           break
-        case 'testbtn':
-          testButton(msg, client)
-          break
         case 'inv':
           invitation(msg, client)
           break
+        case 'ticket':
+          ticket(msg, client)
+          break
+        case 'rename':
+          renameChannel(msg, args)
+          break
+        case 'delete':
+          deleteChannel(msg, args)
+        break
+        case '8ball':
+          ball(msg, args)
+        break
       }
     } catch (err) {
       console.error(err)

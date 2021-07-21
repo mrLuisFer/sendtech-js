@@ -1,12 +1,10 @@
 const { MessageEmbed } = require('discord.js')
-const config = require('../../config.js')
+const config = require('../../../config.js')
 const fetch = require('node-fetch')
 
 const npm = async (msg, args) => {
     const response = await fetch(`https://api.npms.io/v2/package/${args}`)
     const data = await response.json()
-
-    console.log(data)
     if (
       data !== null &&
       data !== undefined &&
@@ -14,9 +12,7 @@ const npm = async (msg, args) => {
       data.collected.metadata !== undefined
     ) {
       const embed = new MessageEmbed()
-        .setAuthor(
-          "npm",
-          "https://pbs.twimg.com/profile_images/1285630920263966721/Uk6O1QGC_400x400.jpg"
+        .setAuthor('npm', 'https://pbs.twimg.com/profile_images/1285630920263966721/Uk6O1QGC_400x400.jpg'
         )
         .setTitle(`📦 Package: ${data.collected.metadata.name}`)
         .setURL(data.collected.github?.homepage !== undefined
@@ -24,15 +20,15 @@ const npm = async (msg, args) => {
           : data.collected.metadata.links?.homepage)
         .addFields(
           {
-            name: "Description:",
+            name: 'Description:',
             value: `${data.collected.metadata.description}`,
           },
           {
-            name: "Version:",
+            name: 'Version:',
             value: `${data.collected.metadata.version}`,
           },
           {
-            name: "📜 License:",
+            name: '📜 License:',
             value: `${data.collected.metadata.license}`,
           }
         )
@@ -41,21 +37,21 @@ const npm = async (msg, args) => {
             data.collected.github?.homepage !== undefined
               ? data.collected.github?.homepage
               : data.collected.metadata.links?.homepage
-          }`,``
+          }`
         )
         .setColor(config.embedColor)
         .setThumbnail(
-          "https://media.giphy.com/media/gHnBLyeYE6hboT3t3o/giphy.gif"
+          'https://media.giphy.com/media/gHnBLyeYE6hboT3t3o/giphy.gif'
         )
         msg.channel.send(embed)
-    } else if (data.code === "NOT_FOUND" || data.code === "INVALID_PARAMETER") {
-      const solution = "Revisa que hayas escrito bien el nombre del paquete o si pusiste un espacio cambialo por un **-**";
+    } else if (data.code === 'NOT_FOUND' || data.code === 'INVALID_PARAMETER') {
+      const solution = 'Revisa que hayas escrito bien el nombre del paquete o si pusiste un espacio cambialo por un **-**';
       const embed = new MessageEmbed()
       .setColor(config.embedColor)
       .setTitle('Modulo no encontrado')
       .setAuthor(
-        "npm",
-        "https://pbs.twimg.com/profile_images/1285630920263966721/Uk6O1QGC_400x400.jpg"
+        'npm',
+        'https://pbs.twimg.com/profile_images/1285630920263966721/Uk6O1QGC_400x400.jpg'
       )
       .setImage('https://images-ext-1.discordapp.net/external/RBrBPOqtBk1IeYXMDmiKjkj-QYQvWj0IVmB0-9Q8Y5A/https/media.giphy.com/media/iJCo9daAP0xugHhhfb/giphy.gif')
       .setDescription(solution)

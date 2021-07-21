@@ -1,14 +1,13 @@
-const randomSearch = require('./randomSearch')
-const giphySearch = require('./giphySearch')
+const { MessageEmbed } = require('discord.js')
+const config = require('../../../../config')
+const randomSearch = require('./randomSearch.js')
+const giphySearch = require('./giphySearch.js')
 
 /**
  * @param {Message} msg -> Message object
  * @param {string} args -> Text for search in the API
  */
 const gif = async (msg, args) => {
-  if (args.length === 0 || args === undefined || !args) return msg.reply('Escribe el Gif a buscar')
-
-  console.log(args)
   let ratingForSearch = 'gp'
   let ratingForRandomSearch = 'g'
 
@@ -16,7 +15,6 @@ const gif = async (msg, args) => {
     ratingForSearch = 'r'
     ratingForRandomSearch = 'r'
   }
-  console.log(ratingForSearch)
 
   if (args[0] === '--random' || args[0] === 'random') {
     randomSearch(msg, ratingForRandomSearch)

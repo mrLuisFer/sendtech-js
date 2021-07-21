@@ -14,7 +14,7 @@ const welcomeEmbed = (member) => {
     .setTitle(`Bienvenid@ ${member ? member.displayName : 'a Sendero Tecnologico'} `)
     .setDescription('Recuerda aprender y compartir tus conocimientos con toda SendTech Community')
     .setColor(config.embedColor)
-    .setImage('https://i.ibb.co/31q6GYR/BIENVENIDA.png')
+    .setImage('https://media.giphy.com/media/TJvPIld5GH7y6dTQX9/giphy.gif')
     .setAuthor(displayName, avatarUrl)
 
   return embed
