@@ -1,7 +1,7 @@
 const { MessageEmbed } = require('discord.js')
 const fetch = require('node-fetch')
-const config = require('../../config.js')
-const sendEmbedError = require('../utils/sendEmbedError.js')
+const config = require('../../../config.js')
+const sendEmbedError = require('../../utils/sendEmbedError.js')
 
 const wiki = async (message, args) => {
   if (args === undefined || !args) return message.reply('Escribe el item a buscar') // If Nothing Is Searched
@@ -9,7 +9,7 @@ const wiki = async (message, args) => {
   console.log(wikiQuery)
 
   if (wikiQuery !== undefined) {
-    const baseUrl = `https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(
+    const baseUrl = `https://es.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(
       wikiQuery
     )}` // From Here BOT Will Search For It
 
@@ -21,7 +21,7 @@ const wiki = async (message, args) => {
       return sendEmbedError({
         msg: message,
         title: 'Error al obtener la data',
-        description: 'Espera a que se repare la llamada a la API e intenta de nuevo',
+        description: 'Espera a que se repare la llamada a la API e intenta de nuevo'
       })
     }
 
@@ -38,7 +38,7 @@ const wiki = async (message, args) => {
 
             Español:
             https://es.wikipedia.org/wiki/${wikiQuery}
-            `,
+            `
         })
       } else {
         // Only One Result
@@ -62,14 +62,14 @@ const wiki = async (message, args) => {
 
             Español:
             https://es.wikipedia.org/wiki/${wikiQuery}
-            `,
+            `
       })
     }
   } else {
     return sendEmbedError({
       msg: message,
       title: 'Error con la query!',
-      description: 'Escribe algo correcto para buscarlo en la wikipedia! ;D',
+      description: 'Escribe algo correcto para buscarlo en la wikipedia! ;D'
     })
   }
 }

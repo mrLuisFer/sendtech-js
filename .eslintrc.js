@@ -1,7 +1,7 @@
 const rules = {
   off: 'off',
   warn: 'warn',
-  error: 'error',
+  error: 'error'
 }
 
 module.exports = {
@@ -9,14 +9,14 @@ module.exports = {
     browser: true,
     commonjs: true,
     es2021: true,
-    node: true,
+    node: true
   },
   extends: ['eslint:recommended', 'standard', 'prettier'],
   parserOptions: {
-    ecmaVersion: 12,
+    ecmaVersion: 12
   },
   rules: {
     quotes: [rules.error, 'single'],
-    eqeqeq: rules.error,
-  },
+    eqeqeq: rules.error
+  }
 }

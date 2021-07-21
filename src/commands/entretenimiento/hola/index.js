@@ -1,8 +1,9 @@
 'use strict'
 
 const { MessageEmbed } = require('discord.js')
-const config = require('../../../config.js')
-const palabras = require('./palabras')
+const config = require('../../../../config.js')
+const palabras = require('./palabras.js')
+const getRandomNumber = require('../../../utils/getRandomNumber')
 
 /**
  * @function hola
@@ -10,8 +11,8 @@ const palabras = require('./palabras')
  * @returns {void} void
  */
 const hola = (msg) => {
-  if (msg.content === `${config.prefix}hola` || msg.content === 'hola') {
-    const palabraFinal = palabras[Math.floor(Math.random() * palabras.length)]
+  if (msg.content === `${config.prefix}hola` || msg.content === 'Hola') {
+    const palabraFinal = palabras[getRandomNumber(palabras.length)]
 
     const embed = new MessageEmbed()
       .setTitle(palabraFinal)

@@ -1,5 +1,5 @@
 const { MessageEmbed } = require('discord.js')
-const config = require('../../config.js')
+const config = require('../../../config.js')
 
 /**
  * @function suggest
