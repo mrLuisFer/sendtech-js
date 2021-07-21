@@ -17,7 +17,7 @@ const help = (msg, client) => {
     **${config.prefix}gif [nombre]**: Te busco un gif
     **${config.prefix}hola**: Te saludo
     **${config.prefix}avatar**: Muestranos a todos tu hermosa foto
-    `;
+    `
     const utilidades = `
     **${config.prefix}npm**: Busca algun paquete de npm
     **${config.prefix}wiki [var]**: Busca algo en la wikipedia
@@ -29,21 +29,21 @@ const help = (msg, client) => {
     **${config.prefix}ticket [pregunta]**: Preguntame algo
     `
     const embed = new MessageEmbed()
-    .setAuthor(msg.author.username, msg.author.displayAvatarURL())
+      .setAuthor(msg.author.username, msg.author.displayAvatarURL())
       .setTitle('El comando de ayuda, solo para ti 😃')
       .addFields(
         {
-          name: "🎮 Entretenimiento",
-          value: entretenimiento,
+          name: '🎮 Entretenimiento',
+          value: entretenimiento
         },
         {
-          name: "✨ Utilidades",
-          value: utilidades,
+          name: '✨ Utilidades',
+          value: utilidades
         },
         {
-          name: "⚙ Server",
-          value: server,
-        },
+          name: '⚙ Server',
+          value: server
+        }
       )
       .setFooter(username, avatarUrl)
       .setColor(config.embedColor)

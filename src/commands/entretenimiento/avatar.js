@@ -9,7 +9,7 @@ const config = require('../../../config.js')
 const avatar = (msg) => {
   if (msg.content === `${config.prefix}avatar`) {
     const embed = new MessageEmbed()
-    .setAuthor(msg.author.username, msg.author.displayAvatarURL())
+      .setAuthor(msg.author.username, msg.author.displayAvatarURL())
       .setTitle(`Que guap@ ${msg.author.username}`)
       .setColor(config.embedColor)
 

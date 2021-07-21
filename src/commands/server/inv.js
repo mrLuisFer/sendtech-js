@@ -25,9 +25,9 @@ const invitation = (msg, client) => {
 
   const row = new MessageActionRow().addComponents(copyUrlBtn, sendToServerBtn)
   const embed = new MessageEmbed()
-  .setTitle('Invita a tus amigos al servidor')
-  .setFooter(`📌 ${config.serverUrl}`)
-  .setColor(config.embedColor)
+    .setTitle('Invita a tus amigos al servidor')
+    .setFooter(`📌 ${config.serverUrl}`)
+    .setColor(config.embedColor)
   msg.channel.send(embed, row)
 
   client.on('clickButton', async (button) => {
@@ -41,7 +41,7 @@ const invitation = (msg, client) => {
       //   .setDescription(
       //     `
       //     Aveces en windows no funciona, ve si te copio la url si no copia la url que esta mas arriba
-          
+
       //      Si estas en **Linux** o **Mac**, ignora este mensaje :)
       //     `
       //   )
