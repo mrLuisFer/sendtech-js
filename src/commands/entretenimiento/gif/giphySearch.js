@@ -18,14 +18,15 @@ const giphySearch = async (msg, args, rating) => {
   try {
     const response = await fetch(giphyUrlQuery)
     const giphyData = await response.json()
-
-    const randomIdNumber = getRandomNumber(giphyData.data.length)
+    const randomIdNumber = getRandomNumber(giphyData.data.length);
     const gifUrl = giphyData.data[randomIdNumber].images.original.url
     
+    const reactions = ['🎭','🎪','🏆','🎲','🃏','😛','😁','🤡','🤣','😂','😆','😅'];
+      const randomReaction = reactions[Math.floor(Math.random() * reactions.length)];
     const embed = new MessageEmbed()
     .setImage(gifUrl)
     .setColor(config.embedColor)
-    return msg.channel.send(embed);
+    msg.channel.send(embed).then(msg => msg.react(randomReaction));
   }
 
   catch (err) {
