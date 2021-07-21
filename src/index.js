@@ -1,24 +1,24 @@
-const { Client } = require('discord.js');
+const { Client } = require('discord.js')
 const config = require('../config')
 const presence = require('./utils/presence.js')
 // Commands
 // Entretenimiento
-const gif = require('./commands/entretenimiento/gif');
-const hola = require('./commands/entretenimiento/hola');
+const gif = require('./commands/entretenimiento/gif')
+const hola = require('./commands/entretenimiento/hola')
 const ball = require('./commands/entretenimiento/8ball.js')
-const avatar = require('./commands/entretenimiento/avatar.js');
+const avatar = require('./commands/entretenimiento/avatar.js')
 // Server
-const invitation = require('./commands/server/inv.js');
-const suggest = require('./commands/server/suggest.js');
-const ticket = require('./commands/server/tickets.js');
+const invitation = require('./commands/server/inv.js')
+const suggest = require('./commands/server/suggest.js')
+const ticket = require('./commands/server/tickets.js')
 // Utilidades
-const help = require('./commands/utilidades/help.js');
-const npm = require('./commands/utilidades/npm.js');
-const pingPong = require('./commands/utilidades/ping');
-const url = require('./commands/utilidades/URLcutter.js');
-const wiki = require('./commands/utilidades/wiki.js');
+const help = require('./commands/utilidades/help.js')
+const npm = require('./commands/utilidades/npm.js')
+const pingPong = require('./commands/utilidades/ping')
+const url = require('./commands/utilidades/URLcutter.js')
+const wiki = require('./commands/utilidades/wiki.js')
 // admin
-const renameChannel = require('./commands/admin/renameChannel.js');
+const renameChannel = require('./commands/admin/renameChannel.js')
 const deleteChannel = require('./commands/admin/deleteChannel.js')
 
 // El intents le da permiso para dar roles y dar la bienvenida
@@ -101,10 +101,10 @@ client.on('message', (msg) => {
           break
         case 'delete':
           deleteChannel(msg, args)
-        break
+          break
         case '8ball':
           ball(msg, args)
-        break
+          break
       }
     } catch (err) {
       console.error(err)

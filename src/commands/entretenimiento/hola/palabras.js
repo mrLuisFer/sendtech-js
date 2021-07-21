@@ -13,7 +13,7 @@ const palabras = [
   '¿Qué hay de nuevo?',
   'Buenas',
   'Hello world',
-  'Hola mundo',
+  'Hola mundo'
 ]
 
 module.exports = palabras
